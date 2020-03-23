@@ -13,10 +13,10 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   components: {
     MessageForm,
-    MessagesList
+    MessageList
   },
 })
-export default class App extends Vue {}
+export default class home extends Vue {}
 </script>
 
 <style scoped>

@@ -3,7 +3,3 @@ export interface IMessage {
     message: string
     nickname: string
 }
-
-export interface IMessageList {
-    [index: number]: IMessage
-}

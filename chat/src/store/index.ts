@@ -1,14 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { IMessage } from '@/interfaces/messages'
 
 Vue.use(Vuex);
 
-const API = "http://localhost:8081/message"
+const API = "http://localhost:8081/message" 
 const axios = require('axios');
 
 export default new Vuex.Store({
   state: {
-    messages: Array<Object>()
+    messages: Array<IMessage>()
   },
   getters: {
     messagesCount: function(state){
@@ -19,7 +20,7 @@ export default new Vuex.Store({
     SET_MESSAGES: function(state, messages) {
       state.messages = messages
     },
-    ADD_MESSAGE: function(state, message: Object) {
+    ADD_MESSAGE: function(state, message: IMessage) {
       state.messages.push(message) 
     }
   },
@@ -36,6 +37,7 @@ export default new Vuex.Store({
       }))
       .then(() => {
         commit("ADD_MESSAGE", message)
+        console.log(this.state.messages)
       })
     }
   },

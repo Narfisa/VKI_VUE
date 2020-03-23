@@ -11,9 +11,8 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   props: ['message']
 })
-export default class App extends Vue {}
+export default class message extends Vue {}
 </script>
 
 <style scoped>
-
 </style>

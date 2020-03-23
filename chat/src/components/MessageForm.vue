@@ -25,22 +25,25 @@ import { Component, Vue } from 'vue-property-decorator';
   data () {
     return{
       Form: {
-        nickname: String,
-        message: String
+        nickname: '',
+        message: ''
       }
     }
   },
   methods: {
     send: function () {
-        this.$store.dispatch("sendMessage", this.$data.Form)
+      this.$store.dispatch("sendMessage", {
+        nickname: this.$data.Form.nickname,
+        message: this.$data.Form.message
+      })
     },
     cancel: function () {
-        this.$data.Form.nickname = ''
-        this.$data.Form.message = ''
+      this.$data.Form.nickname = ''
+      this.$data.Form.message = ''
     }      
   } 
 })
-export default class App extends Vue {}
+export default class MessageForm extends Vue {}
 </script>
 
 <style scoped>
