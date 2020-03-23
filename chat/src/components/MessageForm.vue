@@ -19,27 +19,28 @@
 <script src="//unpkg.com/vue/dist/vue.js"></script>
 <script src="//unpkg.com/element-ui@2.13.0/lib/index.js"></script>
 <script lang="ts">
-import Vue from 'vue'
+import { Component, Vue } from 'vue-property-decorator';
 
-export default Vue.extend({
-    data () {
-        return {
-            Form: {
-                nickname: '',
-                message: ''
-            }
-        }
-    },
-    methods: {
-        send: function () {
-            this.$store.dispatch("sendMessage", this.Form)
-        },
-        cancel: function () {
-            this.Form.nickname = ''
-            this.Form.message = ''
-        }
+@Component({
+  data () {
+    return{
+      Form: {
+        nickname: '',
+        message: ''
+      }
     }
+  },
+  methods: {
+    send: function () {
+        this.$store.dispatch("sendMessage", this.$data.Form)
+    },
+    cancel: function () {
+        this.$data.Form.nickname = ''
+        this.$data.Form.message = ''
+    }      
+  } 
 })
+export default class App extends Vue {}
 </script>
 
 <style scoped>
