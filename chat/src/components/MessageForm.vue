@@ -25,8 +25,8 @@ import { Component, Vue } from 'vue-property-decorator';
   data () {
     return{
       Form: {
-        nickname: '',
-        message: ''
+        nickname: String,
+        message: String
       }
     }
   },
