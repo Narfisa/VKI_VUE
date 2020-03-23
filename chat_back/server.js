@@ -17,14 +17,14 @@ server.listen(8081, function(){
 
 server.post('/message', function(req, res) {
   let message = {
-    id: Data.now(),
+    id: Date.now(),
     nickname: req.body.nickname,
     message: req.body.message
   }
   data.push(message)
-  res.send(message.id).status(200)
+  return res.status(200).send(JSON.stringify((message.id)))
 });
 
 server.get('/message', function(req, res) {
-  res.send(data)
+  return res.status(200).send(JSON.stringify(data))
 });
