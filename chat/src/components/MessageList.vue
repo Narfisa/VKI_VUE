@@ -1,8 +1,8 @@
 <template>
     <div class="MessageList">
-        <ul v-if="length">
+        <ol v-if="length">
             <message v-for="message in messages" :key="message.id"/>
-        </ul>
+        </ol>
     </div>
 </template>
 
@@ -14,6 +14,19 @@ import Message from '@/components/Message.vue'
 export default Vue.extend({
     components: {
         Message
+    },
+    data () {
+        return {
+            messages: []
+        }
+    },
+    methods: {
+        receiveMessages: function () {
+            this.$store.dispatch("receiveMessages")
+        },
+    },
+    mounted: function() {
+        setInterval(this.receiveMessages, 1000)
     }
 })
 </script>
