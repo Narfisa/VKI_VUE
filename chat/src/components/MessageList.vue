@@ -13,7 +13,7 @@ import { IMessageList } from '@/interfaces/messages'
     components: { Message }
 })
 export default class MessageList extends Vue {
-  @Prop() messageList!: IMessageList
+  @Prop() messages!: IMessageList
 }
 </script>
 
