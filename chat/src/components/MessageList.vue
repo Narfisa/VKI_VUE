@@ -1,6 +1,6 @@
 <template>
     <div class="MessageList">
-        <ol v-if="length">
+        <ol v-if="$store.getters.messagesCount">
             <Message v-for="message in messages" :key="message.id" :message="message"/>
         </ol>
     </div>
