@@ -8,12 +8,15 @@
 <script>
 import MessageForm from '@/components/MessageForm'
 import MessageList from '@/components/MessageList'
+import { Component, Vue } from 'vue-property-decorator';
 
-export default {
+@Component({
   components: {
-    MessageForm, MessageList
-  }
-}
+    MessageForm,
+    MessagesList
+  },
+})
+export default class App extends Vue {}
 </script>
 
 <style scoped>
