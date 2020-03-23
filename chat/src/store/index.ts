@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-const API = "http://localhost:8081"
+const API = "http://localhost:8081/message"
 const axios = require('axios');
 
 export default new Vuex.Store({
@@ -26,7 +26,7 @@ export default new Vuex.Store({
   actions: {
     receiveMessages: function ({commit}) {
       axios.get(API).then((response: any) => { // type "any" is needed to be changed
-        commit("setMessages", response)
+        commit("SET_MESSAGES", response)
       })
     },
     sendMessage: function({commit}, message){
