@@ -1,6 +1,6 @@
 <template>
     <div class="MessageList">
-        <ol v-if="$store.getters.messagesCount">
+        <ol v-if="len">
             <Message v-for="message in messages" :key="message.id" :message="message"/>
         </ol>
     </div>
@@ -13,17 +13,17 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
     components: { Message },
-    methods: {
-        receiveMessages: function () {
-            this.$store.dispatch("receiveMessages")
-        }
-    },
     mounted: function() {
-        setInterval(this.$data.receiveMessages, 1000)
+        setInterval(() => {
+            this.$store.dispatch("receiveMessages")
+        }, 1000)
     },
     computed: {
         messages () {
             return this.$store.state.messages
+        },
+        len () {
+            return this.$store.getters.messagesCount
         }
     }
 })
