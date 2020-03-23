@@ -7,28 +7,27 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Component from 'vue-class-component'
 import Message from '@/components/Message.vue'
+import { Component, Vue } from 'vue-property-decorator';
 
-export default Vue.extend({
-    components: {
-        Message
-    },
+
+@Component({
+    components: { Message },
     data () {
-        return {
-            messages: []
+        return { 
+            messages: [] 
         }
     },
     methods: {
         receiveMessages: function () {
             this.$store.dispatch("receiveMessages")
-        },
+        }
     },
     mounted: function() {
-        setInterval(this.receiveMessages, 1000)
+        setInterval(this.$data.receiveMessages, 1000)
     }
 })
+export default class MessageList extends Vue {}
 </script>
 
 <style scoped>
