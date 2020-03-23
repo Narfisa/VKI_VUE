@@ -6,13 +6,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue, Prop } from 'vue-property-decorator';
+import { IMessage } from '@/interfaces/messages'
 
-@Component({
-  props: ['message']
-})
-export default class message extends Vue {}
+export default class message extends Vue {
+  @Prop() message!: IMessage
+}
 </script>
 
 <style scoped>
+
 </style>
