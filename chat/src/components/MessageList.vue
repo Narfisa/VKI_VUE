@@ -1,6 +1,6 @@
 <template>
-    <div class="MessageList">
-        <Message v-for="message in messages" :key="message.id" :message="message"/>
+    <div class="MessageList" v-if="len">
+        <Message v-for="message in msg" :key="message.id" :message="message"/>
     </div>
 </template>
 
@@ -10,11 +10,22 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import { IMessageList } from '@/interfaces/messages'
 
 @Component({
-    components: { Message }
+    components: { Message },
+    computed: {
+        msg () {
+            return this.$store.getters.getMessages
+        },
+        len () {
+            return this.$store.getters.messagesCount
+        }
+    },
+    mounted: function() {
+        setInterval(() => {
+            this.$store.dispatch("receiveMessages")
+        }, 1000)
+    }
 })
-export default class MessageList extends Vue {
-  @Prop() messages!: IMessageList
-}
+export default class MessageList extends Vue {}
 </script>
 
 <style scoped>

@@ -3,7 +3,11 @@ let bodyParser = require('body-parser');
 let cors = require('cors');
 
 let server = express();
-let data = []
+let data = [{
+  id: Date.now(),
+  nickname: 'awdawd',
+  message: 'awfsejhefkdawhkl'
+}]
 
 server.use(cors());
 server.use(bodyParser.json());
