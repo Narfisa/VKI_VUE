@@ -14,6 +14,9 @@ export default new Vuex.Store({
   getters: {
     messagesCount: function(state) {
       return state.messages.length
+    },
+    getMessages: function(state){
+      return state.messages
     }
   },
   mutations: {
@@ -27,7 +30,7 @@ export default new Vuex.Store({
   actions: {
     receiveMessages: function({commit}) {
       axios.get(API).then((response: AxiosResponse<IMessageList>) => {
-        commit("SET_MESSAGES", response)
+        commit("SET_MESSAGES", response.data)
       })
     },
     sendMessage: function({commit}, message) {

@@ -16,4 +16,15 @@ export default class Message extends Vue {
 </script>
 
 <style scoped>
+.nick{
+  background: #DCDFE6;
+  border-width: 1px;
+  border-radius: 10%;
+}
+.msg{
+  margin-left: 1%;
+}
+.message{
+  margin-bottom: 1%;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <MessageList/>
+    <MessageList />
     <MessageForm/>
   </div>
 </template>
@@ -12,8 +12,7 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
   components: {
-    MessageForm,
-    MessageList
+    MessageForm, MessageList
   }
 })
 export default class Home extends Vue {}
