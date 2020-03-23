@@ -1,7 +1,7 @@
 <template>
     <div class="MessageList">
         <ol v-if="$store.getters.messagesCount">
-            <Message v-for="message in messages" :key="message.id" :message="messages"/>
+            <Message v-for="message in messages" :key="message.id" :message="message"/>
         </ol>
     </div>
 </template>

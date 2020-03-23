@@ -31,13 +31,9 @@ export default new Vuex.Store({
       })
     },
     sendMessage: function({commit}, message){
-      axios.post(API, JSON.stringify({
-        message: message.message,
-        nickname: message.nickname
-      }))
+      axios.post(API, message)
       .then(() => {
         commit("ADD_MESSAGE", message)
-        console.log(this.state.messages)
       })
     }
   },

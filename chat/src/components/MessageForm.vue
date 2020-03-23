@@ -32,10 +32,7 @@ import { Component, Vue } from 'vue-property-decorator';
   },
   methods: {
     send: function () {
-      this.$store.dispatch("sendMessage", {
-        nickname: this.$data.Form.nickname,
-        message: this.$data.Form.message
-      })
+      this.$store.dispatch("sendMessage",this.$data.Form)
     },
     cancel: function () {
       this.$data.Form.nickname = ''
