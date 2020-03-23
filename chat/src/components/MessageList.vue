@@ -1,13 +1,13 @@
 <template>
     <div class="MessageList">
-        <!--<Message v-for="message in messages" :key="message.id" :message="message"/>-->
+        <Message v-for="message in $store.state.messages" :key="message.id" :message="message"/>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { IMessageList } from '@/interfaces/messages'
-import Message from './Message.vue';
+import Message from '@/components/Message.vue';
 
 @Component({
     components: { Message }

@@ -2,10 +2,10 @@
     <div class="MessageForm">
         <el-form label-width="100px" :model="Form">
             <el-form-item label="Name">
-                <el-input v-model="Form.nickname"> </el-input>
+                <el-input v-model="Form.nickname"></el-input>
             </el-form-item>
             <el-form-item label="Message">
-                <el-input v-model="Form.message"> </el-input>
+                <el-input v-model="Form.message"></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="send"> Send </el-button>
