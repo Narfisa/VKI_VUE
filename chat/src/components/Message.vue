@@ -6,10 +6,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-    props: ['message'],
+import { Component, Vue } from 'vue-property-decorator';
+
+@Component({
+  props: ['message']
 })
+export default class App extends Vue {}
 </script>
 
 <style scoped>
