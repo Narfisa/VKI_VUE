@@ -1,33 +1,20 @@
 <template>
     <div class="MessageList">
-        <ol v-if="len">
-            <Message v-for="message in messages" :key="message.id" :message="message"/>
-        </ol>
+        <Message v-for="message in messages" :key="message.id" :message="message"/>
     </div>
 </template>
 
 <script lang="ts">
 import Message from '@/components/Message.vue'
-import { Component, Vue } from 'vue-property-decorator';
-
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import { IMessageList } from '@/interfaces/messages'
 
 @Component({
-    components: { Message },
-    mounted: function() {
-        setInterval(() => {
-            this.$store.dispatch("receiveMessages")
-        }, 1000)
-    },
-    computed: {
-        messages () {
-            return this.$store.state.messages
-        },
-        len () {
-            return this.$store.getters.messagesCount
-        }
-    }
+    components: { Message }
 })
-export default class MessageList extends Vue {}
+export default class MessageList extends Vue {
+  @Prop() messageList!: IMessageList
+}
 </script>
 
 <style scoped>
