@@ -1,7 +1,7 @@
 <template>
     <div class="MessageList">
         <ol v-if="length">
-            <message v-for="message in messages" :key="message.id"/>
+            <Message v-for="message in messages" :key="message.id" :message="message"/>
         </ol>
     </div>
 </template>
