@@ -15,7 +15,7 @@ import { Component, Vue } from 'vue-property-decorator';
     MessageForm, MessageList
   }
 })
-export default class home extends Vue {}
+export default class Home extends Vue {}
 </script>
 
 <style scoped>

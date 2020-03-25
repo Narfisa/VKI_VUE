@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import Message from '@/components/Message.vue'
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { IMessageList } from '@/interfaces/messages'
+import Message from '@/components/Message.vue';
 
 @Component({
     components: { Message },

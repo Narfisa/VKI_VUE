@@ -1,7 +1,7 @@
 <template>
-    <div class="message">
-        <span class="nick"> {{ msg.nickname }} : </span>
-        <span class="msg"> {{ msg.message }} </span>
+    <div class="Message">
+        <span class="nick"> {{ message.nickname }} :</span>
+        <span class="msg"> {{ message.message }} </span>
     </div>    
 </template>
 
@@ -9,18 +9,8 @@
 import { Vue, Prop, Component } from 'vue-property-decorator';
 import { IMessage } from '@/interfaces/messages'
 
-@Component({
-  data () {
-    return {
-      msg: {
-        nickname: this.$props.message.nickname,
-        message: this.$props.message.message
-      } 
-    }
-  }
-})
-
-export default class message extends Vue {
+@Component
+export default class Message extends Vue {
   @Prop() message!: IMessage
 }
 </script>
