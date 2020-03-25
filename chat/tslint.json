@@ -14,8 +14,8 @@
     "no-consecutive-blank-lines": false,
     "object-literal-sort-keys": false,
     "ordered-imports": false,
-    "semicolon": false, // TODO: decide, which code style you prefer
-    "quotemark": false, // TODO: the same
+    "semicolon": false, 
+    "quotemark": false, 
     "trailing-comma": false,
     "only-arrow-functions": false,
     "object-literal-shorthand": false,
