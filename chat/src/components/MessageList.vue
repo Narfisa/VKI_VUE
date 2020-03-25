@@ -11,21 +11,22 @@ import Message from '@/components/Message.vue';
 
 @Component({
     components: { Message },
-    computed: {
-        msg() {
-            return this.$store.getters.getMessages
-        },
-        len() {
-            return this.$store.getters.messagesCount
-        }
-    },
-    mounted: function() {
+})
+export default class MessageList extends Vue {
+    get msg() {
+        return this.$store.getters.getMessages
+    }
+
+    get len() {
+        return this.$store.getters.messagesCount
+    }
+
+    mounted() {
         setInterval(() => {
             this.$store.dispatch("receiveMessages")
         }, 1000)
     }
-})
-export default class MessageList extends Vue {}
+}
 </script>
 
 <style scoped>
