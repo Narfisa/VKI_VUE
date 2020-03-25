@@ -15,7 +15,7 @@ export default new Vuex.Store({
     messagesCount: function(state) {
       return state.messages.length
     },
-    getMessages: function(state){
+    getMessages: function(state) {
       return state.messages
     }
   },

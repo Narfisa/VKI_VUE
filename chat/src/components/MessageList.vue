@@ -12,10 +12,10 @@ import Message from '@/components/Message.vue';
 @Component({
     components: { Message },
     computed: {
-        msg () {
+        msg() {
             return this.$store.getters.getMessages
         },
-        len () {
+        len() {
             return this.$store.getters.messagesCount
         }
     },
