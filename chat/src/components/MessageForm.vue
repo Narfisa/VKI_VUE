@@ -1,5 +1,5 @@
 <template>
-    <div class="MessageForm">
+    <div class="message-form">
         <el-form label-width="100px" :model="Form">
             <el-form-item label="Name">
                 <el-input v-model="Form.nickname" />
@@ -41,4 +41,7 @@ export default class MessageForm extends Vue {
 </script>
 
 <style scoped>
+    .message-form {
+        padding: 10px;
+    }
 </style>

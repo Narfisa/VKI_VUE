@@ -1,5 +1,5 @@
 <template>
-    <div class="MessageList" v-if="len">
+    <div class="message-list" v-if="len">
         <Message v-for="message in msg" :key="message.id" :message="message"/>
     </div>
 </template>
@@ -30,4 +30,7 @@ export default class MessageList extends Vue {
 </script>
 
 <style scoped>
+    .message-list {
+        padding: 10px;
+    }
 </style>
