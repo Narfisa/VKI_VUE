@@ -7,33 +7,33 @@ Vue.use(Vuex);
 
 const API = "http://localhost:8081/message"
 
-export default new Vuex.Store({
+export const Store = {
   state: {
     messages: Array<IMessage>()
   },
   getters: {
-    messagesCount: function(state) {
+    messagesCount: function(state: any) {
       return state.messages.length
     },
-    getMessages: function(state) {
+    getMessages: function(state: any) {
       return state.messages
     }
   },
   mutations: {
-    SET_MESSAGES: function(state, messages) {
+    SET_MESSAGES: function(state: any, messages: IMessageList) {
       state.messages = messages
     },
-    ADD_MESSAGE: function(state, message: IMessage) {
+    ADD_MESSAGE: function(state: any, message: IMessage) {
       state.messages.push(message)
     }
   },
   actions: {
-    receiveMessages: function({commit}) {
+    receiveMessages: function({commit}: any) {
       axios.get(API).then((response: AxiosResponse<IMessageList>) => {
         commit("SET_MESSAGES", response.data)
       })
     },
-    sendMessage: function({commit}, message) {
+    sendMessage: function({commit}:any, message: IMessage) {
       axios.post(API, message)
       .then(() => {
         commit("ADD_MESSAGE", message)
@@ -42,4 +42,6 @@ export default new Vuex.Store({
   },
   modules: {
   }
-});
+};
+
+export default new Vuex.Store(Store)
