@@ -5,11 +5,10 @@ import Vuex from 'vuex'
 import axios, {AxiosResponse} from 'axios'
 import {IMessage, IMessageList} from '@/interfaces/messages'
 
-// store
-
 const localVue = createLocalVue()
 localVue.use(Vuex)
 localVue.use(ElementUI)
+const API = "http://localhost:8081/message"
 const store = new Vuex.Store({
   state: {
     messages: Array<IMessage>()
@@ -49,20 +48,18 @@ const store = new Vuex.Store({
 
 store.dispatch = jest.fn()
 
-
-
 describe('MessageForm.vue', () => {
-  it('Send values on button click', async () => {
-    let message = {id:0, nickname: 'Narfisa', message: 'new message'}
-    const wrapper = mount(MessageForm, {
-      localVue,
-      store
+    it('Send values on button click', async () => {
+      let message = {id:0, nickname: 'Narfisa', message: 'new message'}
+      const wrapper = mount(MessageForm, {
+        localVue,
+        store
+      })
+  
+      wrapper.find('input[type="text"]').setValue(message.nickname) 
+      wrapper.find('textarea').setValue(message.message)
+      wrapper.find('.el-button--primary').trigger('click')
+      
+      expect(store.dispatch).toHaveBeenCalledWith('sendMessage', message)
     })
-
-    wrapper.find('input[type="text"]').setValue(message.nickname) 
-    wrapper.find('textarea').setValue(message.message)
-    wrapper.find('.el-button--primary').trigger('click')
-    
-    expect(store.dispatch).toHaveBeenCalledWith('sendMessage', message)
   })
-})
