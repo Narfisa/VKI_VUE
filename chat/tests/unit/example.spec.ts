@@ -1,14 +1,17 @@
 import { shallowMount, mount, createLocalVue } from '@vue/test-utils'
 import Message from '@/components/Message.vue'
 import MessageList from '@/components/MessageList.vue'
+import MessageForm from '@/components/MessageForm.vue'
+import ElementUI from 'element-ui'
 import Vuex from 'vuex'
-import axios, {AxiosResponse} from 'axios';
-import {IMessage, IMessageList} from '@/interfaces/messages';
+import axios, {AxiosResponse} from 'axios'
+import {IMessage, IMessageList} from '@/interfaces/messages'
 
 // store
 const API = "http://localhost:8081/message"
 const localVue = createLocalVue()
 localVue.use(Vuex)
+localVue.use(ElementUI)
 const store = new Vuex.Store({
   state: {
     messages: Array<IMessage>()
@@ -46,6 +49,8 @@ const store = new Vuex.Store({
   }
 })
 
+store.dispatch = jest.fn()
+
 describe('Message.vue', () => {
   it('renders props.msg when passed', () => {
     const message = {nickname: 'Narfisa', message: 'new message'}
@@ -74,3 +79,18 @@ describe('MessageList.vue', () => {
   })
 })
 
+describe('MessageForm.vue', () => {
+  it('Send values on button click', async () => {
+    let message = {id:0, nickname: 'Narfisa', message: 'new message'}
+    const wrapper = mount(MessageForm, {
+      localVue,
+      store
+    })
+
+    wrapper.find('input[type="text"]').setValue(message.nickname) 
+    wrapper.find('textarea').setValue(message.message)
+    wrapper.find('.el-button--primary').trigger('click')
+    
+    expect(store.dispatch).toHaveBeenCalledWith('sendMessage', message)
+  })
+})

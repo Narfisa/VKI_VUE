@@ -24,6 +24,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class MessageForm extends Vue {
     Form = {
+        id: 0,
         nickname: '',
         message: ''
     }
