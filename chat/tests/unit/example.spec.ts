@@ -1,5 +1,4 @@
 import { shallowMount, mount, createLocalVue } from '@vue/test-utils'
-import Message from '@/components/Message.vue'
 import MessageList from '@/components/MessageList.vue'
 import MessageForm from '@/components/MessageForm.vue'
 import ElementUI from 'element-ui'
@@ -50,16 +49,6 @@ const store = new Vuex.Store({
 })
 
 store.dispatch = jest.fn()
-
-describe('Message.vue', () => {
-  it('renders props.msg when passed', () => {
-    const message = {nickname: 'Narfisa', message: 'new message'}
-    const wrapper = shallowMount(Message, {
-      propsData: { message }
-    })
-    expect(wrapper.text()).toMatch(`${message.nickname} :  ${message.message}`)
-  })
-})
 
 describe('MessageList.vue', () => {
   it('render two messages', () => {
