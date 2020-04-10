@@ -20,6 +20,7 @@ server.listen(8081, function(){
 })
 
 server.post('/message', function(req, res) {
+  console.log(req.body)
   let message = {
     id: Date.now(),
     nickname: req.body.nickname,
