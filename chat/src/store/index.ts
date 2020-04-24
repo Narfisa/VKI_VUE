@@ -33,7 +33,7 @@ export const Store = {
         commit("SET_MESSAGES", response.data)
       })
     },
-    sendMessage: function({commit}:any, message: IMessage) {
+    sendMessage: function({commit}: any, message: IMessage) {
       axios.post(API, message)
       .then(() => {
         commit("ADD_MESSAGE", message)

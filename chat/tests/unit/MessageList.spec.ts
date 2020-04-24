@@ -10,9 +10,9 @@ localVue.use(ElementUI)
 
 describe('MessageList.vue', () => {
     it('render two messages', () => {
-      let messages = [
-        {id:0, nickname: 'Narfisa', message: 'new message'},
-        {id:1, nickname: 'Elensiya', message: 'another message'}
+      const messages = [
+        {id: 0, nickname: 'Narfisa', message: 'new message'},
+        {id: 1, nickname: 'Elensiya', message: 'another message'}
       ]
       store.state.messages = messages
       const wrapper = mount(MessageList, {

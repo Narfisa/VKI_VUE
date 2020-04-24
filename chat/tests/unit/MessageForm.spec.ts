@@ -10,16 +10,16 @@ localVue.use(ElementUI)
 
 describe('MessageForm.vue', () => {
     it('Send values on button click', () => {
-      let message = {id:0, nickname: 'Narfisa', message: 'new message'}
+      const message = {id: 0, nickname: 'Narfisa', message: 'new message'}
       const wrapper = mount(MessageForm, {
         localVue,
         store
       })
-  
-      wrapper.find('input[type="text"]').setValue(message.nickname) 
+
+      wrapper.find('input[type="text"]').setValue(message.nickname)
       wrapper.find('textarea').setValue(message.message)
       wrapper.find('.el-button--primary').trigger('click')
-      
+
       expect(store.dispatch).toHaveBeenCalledWith('sendMessage', message)
     })
   })
