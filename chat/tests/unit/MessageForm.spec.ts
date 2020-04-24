@@ -23,3 +23,19 @@ describe('MessageForm.vue', () => {
       expect(store.dispatch).toHaveBeenCalledWith('sendMessage', message)
     })
   })
+
+  describe('MessageForm.vue', () => {
+    it('Delete values on inputs after click cancel button', () => {
+      const message = {nickname: 'Narfisa', message: 'new message'}
+      const wrapper = mount(MessageForm, {
+        localVue,
+      })
+
+      wrapper.find('input[type="text"]').setValue(message.nickname)
+      wrapper.find('textarea').setValue(message.message)
+      wrapper.find('.el-button--info').trigger('click')
+      
+      expect(wrapper.find('input[type="text"]').text()).toBe('')
+      expect(wrapper.find('textarea').text()).toBe('')
+    })
+  })
