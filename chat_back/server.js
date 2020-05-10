@@ -1,35 +1,33 @@
-let express = require('express');
-let bodyParser = require('body-parser');
-let cors = require('cors');
+const WebSocketServer = require('websocket').server;
+const http = require('http');
+let connections = [];
 
-let server = express();
-let data = [{
-  id: Date.now(),
-  nickname: 'awdawd',
-  message: 'awfsejhefkdawhkl'
-}]
+const server = http.createServer();
 
-server.use(cors());
-server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({
-  extended: true
-}));
-
-server.listen(8081, function(){
-  console.log('IT\'S WORKING!');
-})
-
-server.post('/message', function(req, res) {
-  console.log(req.body)
-  let message = {
-    id: Date.now(),
-    nickname: req.body.nickname,
-    message: req.body.message
-  }
-  data.push(message)
-  return res.status(200).send(JSON.stringify((message.id)))
+server.listen(8081, function() {
+  console.log('IT\'S WORKING!')
 });
 
-server.get('/message', function(req, res) {
-  return res.status(200).send(JSON.stringify(data))
+wsServer = new WebSocketServer({
+  httpServer: server
+});
+
+// WebSocket server
+wsServer.on('request', function(request) {
+    const connection = request.accept(null, request.origin);
+
+    connection.on('message', function(message) {
+        if (message.type === 'utf8') {
+            console.log(message.utf8Data);
+            connections.map((element) => {
+                element.sendUTF(message.utf8Data);
+            });
+        }
+    });
+
+    connection.on('close', function(connection) {
+        connections = connections.filter((element) => element !== connection);
+    });
+
+    connections.push(connection);
 });
