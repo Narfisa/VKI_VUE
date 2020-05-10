@@ -38,7 +38,7 @@ export default class MessageForm extends Vue {
         if (!this.connect) {
             return false
         }
-        
+
         this.socket.send(JSON.stringify(this.Form))
         this.Form.message = ''
     }
@@ -57,8 +57,7 @@ export default class MessageForm extends Vue {
         this.socket.onclose = (event) => {
             if (event.wasClean) {
                 console.log('connection was close clear')
-            }
-            else {
+            } else {
                 console.log('connection lost')
             }
             console.log('Error code: ' + event.code + '; error: ' + event.reason)

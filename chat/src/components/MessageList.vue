@@ -32,8 +32,7 @@ export default class MessageList extends Vue {
         socket.onclose = (event) => {
             if (event.wasClean) {
                 console.log('connection was close clear')
-            }
-            else {
+            } else {
                 console.log('connection lost')
             }
             console.log('Error code: ' + event.code + '; error: ' + event.reason)
