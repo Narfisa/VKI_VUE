@@ -29,10 +29,6 @@ export default class MessageForm extends Vue {
         message: ''
     }
 
-    send() {
-        this.$store.dispatch("sendMessage", this.$data.Form)
-    }
-
     cancel() {
         this.$data.Form.nickname = '';
         this.$data.Form.message = ''

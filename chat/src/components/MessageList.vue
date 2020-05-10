@@ -6,26 +6,13 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import { IMessageList } from '@/interfaces/messages'
+import { IMessageList } from '../interfaces/messages'
 import Message from '@/components/Message.vue';
 
 @Component({
     components: { Message },
 })
 export default class MessageList extends Vue {
-    get msg() {
-        return this.$store.getters.getMessages
-    }
-
-    get len() {
-        return this.$store.getters.messagesCount
-    }
-
-    mounted() {
-        setInterval(() => {
-            this.$store.dispatch("receiveMessages")
-        }, 1000)
-    }
 }
 </script>
 
