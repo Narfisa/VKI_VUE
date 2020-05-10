@@ -29,11 +29,46 @@ export default class MessageForm extends Vue {
         message: ''
     }
 
+    API = 'ws://localhost:8081'
+
+    socket = new WebSocket(this.API)
+    connect = false
+
+    send() {
+        if (!this.connect) {
+            return false
+        }
+        
+        this.socket.send(JSON.stringify(this.Form))
+        this.Form.message = ''
+    }
+
     cancel() {
         this.$data.Form.nickname = '';
         this.$data.Form.message = ''
     }
 
+    mounted() {
+        this.socket.onopen = () => {
+            this.connect = true
+            console.log('connect')
+        }
+
+        this.socket.onclose = (event) => {
+            if (event.wasClean) {
+                console.log('connection was close clear')
+            }
+            else {
+                console.log('connection lost')
+            }
+            console.log('Error code: ' + event.code + '; error: ' + event.reason)
+            this.connect = false
+        }
+
+        this.socket.onerror = function(error) {
+            console.log('error: ' + error)
+        }
+    }
 }
 </script>
 
